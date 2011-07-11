@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 require 'optparse'
-require_relative 'easycmp/easycmp'
+require_relative 'word'
 
 num=10
 all=false
@@ -36,23 +36,6 @@ $points={
   ?x=> 8, ?y=> 3, ?z=>10
 }
 $points.default=1
-
-class Word
-  attr_accessor :val,:uniq,:word
-  easy_cmp :@uniq,:@val,:@word
-
-  def initialize word
-    larr=letterfy(word)
-
-    @word=word
-    @val=larr.collect{|c,n| n*$points[c]}.inject{|sum,val| sum+val}
-    @uniq=larr.length
-  end
-
-  def to_s
-    @word
-  end
-end
 
 list=[]
 letters=letterfy(ARGV.join.downcase.delete('^a-z'))
