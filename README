@@ -1,0 +1,22 @@
+A BIT OF HISTORY
+    I've been considering adding this up here for a while, but didn't want to due to its somewhat "dishonest" nature. However, when I was interviewing for jobs, I discussed this with my potential employers and they were very interested in them because of their reflection on my problem-solving abilities and critical analysis, so I figure it's worth throwing up here if only because they contain novel algorithms.
+
+THE REPO
+    This repository contains two programs suitable for guessing words in Hanging with Friends and building words in Hanging with Friends.
+
+THE GAME'S RULES
+    There are two stages: guessing and building.
+    When guessing, it's pretty much Hangman. The number of guesses you get is inversely proportional to the length of the word you're guessing. One can use a set of "lifelines" to aid in guessing, but the algorithm specified here really does well enough without them that there's no need to add AI for asking the player to use them... I think. I may work on this later.
+    When building, you're given 12 letters and must make a word with at least 4 letters and at most 8.
+
+ALGORITHMS
+    This was a challenge to myself to find a set of algorithms to give the most optimal words in Hanging with Friends going both directions: in giving words for others to guess and guessing words others give.
+    The current algorithm for building words for others to guess takes the letters you're given and finds the set of acceptable words that can be built with the letters you hold, then ranks them first by the number of unique letters they have in them (with the premise that 8 unique letters gives them the least hint as to the structure of the word) and then ranked by Scrabble score (which should give a relatively good ranking of the rarity of the letters in the words) with the hopes that this will give the hardest words to guess. [Check the FUTURE PLANS section for more information regarding improving this algorithm for tricking cheat programs.]
+    The guessing algorithm is subtle, but works amazingly well. It searches through the list of acceptable words given the letters you know are in the word (say you're guessing 'tipping' and have guessed 'ing' and 'k,' you'd put in '_i__ing k'), then takes all words that match the parameters and gives you the listing of the letters that appear in the most words. This is fantastic because it gives you the letter most likely to be in the current word... but even if it's not, it's the letter that eliminates the greatest number of words from the list.
+    I've considered improving this algorithm with suffix and prefix detection and other such things, but if you think about it, this is unneccessary: if there are a lot of words ending with "ing" of the right length with the right letters in the blanks, [i,n,g] will show up as most likely letters and be eliminated or confirmed. It's a robust algorithm due to its being based on the statistics inherent in the word list.
+
+FUTURE PLANS
+    I'd like to program a "cbuild.rb" to be used on people who're obviously cheating. It would determine the words that are more likely to end up in a drawn-out guessing of a final letter or other such scenarios. This requires more thought, though, and some planning. I will make it at some point, but I haven't found a good place to /start/ attacking this algorithm, so it will wait.
+
+RESOURCES
+    The game uses a modified ENABLE word list. One can pull the modified list from the .ipa package that iTunes stores very easily. Until proven otherwise, the original list is public domain and they mention no prohibition of publishing the modified list, so I'm including the word list in my repository.
