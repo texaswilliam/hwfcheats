@@ -1,0 +1,3 @@
+[submodule "easycmp"]
+	path = easycmp
+	url = git://github.com/texaswilliam/easycmp.git
