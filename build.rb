@@ -22,12 +22,6 @@ LETTERS are the letters you have in your rack for building words.
   end
 end.parse!
 
-def letterfy str
-  h=Hash.new(0)
-  str.each_char{|c| h[c]=(h[c].nil? ? 1 : h[c]+1)}
-  return h
-end
-
 $points={
   ?b=> 4, ?c=> 4, ?d=> 2, ?f=> 4,
   ?g=> 3, ?h=> 3, ?j=>10, ?k=> 5,
@@ -38,12 +32,12 @@ $points={
 $points.default=1
 
 list=[]
-letters=letterfy(ARGV.join.downcase.delete('^a-z'))
+letters=Word.letterfy(ARGV.join.downcase.delete('^a-z'))
 exit if letters.length < 4
 File.open("enable1.txt") do |f| f.each do |line|
     line.chomp!
     next if line.length < 4 or line.length > 8
-    larr=letterfy(line)
+    larr=Word.letterfy(line)
     list << Word.new(line) if larr.all?{|c,n| n<=letters[c]}
   end
 end
