@@ -17,6 +17,7 @@ ALGORITHMS
 
 FUTURE PLANS
     I'd like to program a "cbuild.rb" to be used on people who're obviously cheating. It would determine the words that are more likely to end up in a drawn-out guessing of a final letter or other such scenarios. This requires more thought, though, and some planning. I will make it at some point, but I haven't found a good place to /start/ attacking this algorithm, so it will wait.
+    Also, better variable names and comments. xP
 
 RESOURCES
     The game uses a modified ENABLE word list. One can pull the modified list from the .ipa package that iTunes stores very easily. Until proven otherwise, the original list is public domain and they mention no prohibition of publishing the modified list, so I'm including the word list in my repository.
