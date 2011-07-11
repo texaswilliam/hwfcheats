@@ -6,7 +6,11 @@ blank=?_
 num_to_print=10
 all=false
 OptionParser.new do |opts|
-  opts.banner='Usage: build [options]'
+  opts.banner=<<-BANNER
+    Usage: build [options] WORD KNOWN-NOT
+    WORD is the word in HWF, with _ in the appropriate places for blanks.
+    KNOWN-NOT are letters already guessed and shown in red.
+  BANNER
 
   opts.on('-n','--num INT',Integer,'Print top INT of letters.') do |n|
     num=n
