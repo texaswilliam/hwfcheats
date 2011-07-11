@@ -6,8 +6,8 @@ num=10
 all=false
 OptionParser.new do |opts|
   opts.banner=<<-BANNER
-    Usage: build [options] LETTERS
-    LETTERS are the letters you have in your rack for building words.
+Usage: build [options] LETTERS
+LETTERS are the letters you have in your rack for building words.
   BANNER
 
   opts.on('-n','--num INT',Integer,'Print given number of solutions.') do |n|
