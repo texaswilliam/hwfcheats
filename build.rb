@@ -43,11 +43,8 @@ File.open("enable1.txt") do |f| f.each do |line|
 end
 
 begin
-  list.sort.each do |word|
-    unless all
-      exit unless num>0
-      num-=1
-    end
+  list.sort!
+  (all ? list : list.first(num)).each do |word|
     print (word.to_s+'.').ljust(11),word.val.to_s.ljust(6)
     puts word.uniq
   end
