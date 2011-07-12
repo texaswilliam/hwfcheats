@@ -2,7 +2,8 @@ require_relative 'easycmp/easycmp'
 
 class Word
   attr_accessor :val,:uniq,:word
-  easy_cmp :@uniq,:@val,:@word
+  easy_cmp :@uniq,:@val, reverse: true
+  easy_cmp :@word
 
   def initialize word
     larr=Word.letterfy(word)

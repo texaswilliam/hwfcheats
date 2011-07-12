@@ -43,7 +43,7 @@ File.open("enable1.txt") do |f| f.each do |line|
 end
 
 begin
-  list.sort.reverse_each do |word|
+  list.sort.each do |word|
     unless all
       exit unless num>0
       num-=1
