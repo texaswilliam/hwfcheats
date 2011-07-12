@@ -25,6 +25,16 @@ KNOWN-NOT are letters already guessed and shown in red.
 end.parse!
 
 word=ARGV[0].delete('^a-z'+blank).chars.collect{|c| c==blank ? nil : c}
+
+unless word.include?(nil)
+  puts 'You\'ve included no blanks.'
+  exit
+end
+unless word.length>=4 and word.length<=8
+  puts 'Words must be between 4 and 8 letters to be accepted by HWF.'
+  exit
+end
+
 nots=(ARGV[1..-1].join.delete('^a-z').chars.to_a+word.compact).uniq.join
 regex=Regexp.compile("^#{word.collect{|c| c.nil? ? "[^#{nots}]" : c}.join}$")
 
