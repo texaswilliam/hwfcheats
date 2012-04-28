@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 require 'optparse'
+require_relative 'points'
 
 blank=??
 
@@ -56,7 +57,9 @@ File.open('enable1.txt') {|f| f.each do |line|
 end}
 
 unless letters.length == 0
-  letters.sort{|a,b| (b[1]<=>a[1]).nonzero? || a[0]<=>b[0]}
+  letters.sort{|a,b| ((b[1]<=>a[1]).nonzero? ||
+                       $points[a[0]]<=>$points[b[0]]).nonzero? ||
+                       a[0]<=>b[0]}
     .collect{|el| el[0]+('%3.1f' % (el[1]*100.0/num_of_matches)).rjust(6)+'%'+
                         el[1].to_s.rjust(6)}
     .each do |str|
